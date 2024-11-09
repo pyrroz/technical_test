@@ -1,0 +1,15 @@
+# basic docker-compose file for elasticsearch using the latest version i found on the docker hub
+# i added the cors after getting the cors error in the browser
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.25
+    environment:
+      - discovery.type=single-node
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - http.cors.allow-headers=X-Requested-With,Content-Type,Authorization
+      - http.cors.allow-credentials=true
+      - http.cors.allow-methods=OPTIONS,HEAD,GET,POST,PUT,DELETE
+    ports:
+      - "9200:9200"
